@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6",
+    "com.unity.purchasing": "4.0.1",
+    "com.playfab.sdk": "1.106.220401"
+  }
+}
