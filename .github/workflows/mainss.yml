@@ -1,0 +1,33 @@
+name: Build Android AAB
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Android App Bundle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Unity
+        uses: game-ci/unity-actions/setup@v3
+        with:
+          unityVersion: 2022.3.29f1
+
+      - name: Build AAB
+        uses: game-ci/unity-actions/build@v3
+        with:
+          targetPlatform: Android
+          buildMethod: BuildScript.BuildAndroidAAB
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: uno-aab
+          path: build/*.aab
